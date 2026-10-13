@@ -76,7 +76,7 @@ flowchart LR
 - **覆盖主流模型** — 可识别 ChatGPT、Gemini、Claude、DeepSeek 等主流模型的生成特征。
 - **多语言** — 同一个接口支持多种语言。
 - **服务端密钥** — Bearer Token 鉴权,不同环境可使用独立凭证。
-- **计费简单** — 按输入字数计费(每词 1 credit);Detect 与 Humanize 共用同一额度。新账户赠送试用额度。
+- **计费简单** — 按输入词数计费,每词 1 credit;中文按字数计,1 个字计 1 个词。
 
 ```bash
 curl https://api.lynote.ai/v1/detect \

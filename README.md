@@ -78,7 +78,7 @@ The local analyzer here is built for cautious, offline triage, and the productio
 - **Covers major models** — detects patterns associated with ChatGPT, Gemini, Claude, DeepSeek, and more.
 - **Multilingual** — the same endpoint handles multiple languages.
 - **Server-side keys** — Bearer-token auth, with separate credentials per environment.
-- **Simple billing** — 1 credit per input word; Detect and Humanize share one credit balance. New accounts get trial credits.
+- **Simple billing** — 1 credit per input word (Chinese is counted per character: 1 character = 1 word).
 
 ```bash
 curl https://api.lynote.ai/v1/detect \
