@@ -23,7 +23,11 @@
   <a href="#数据集评测">数据集评测</a>
   ·
   <a href="#典型使用场景">典型使用场景</a>
+  ·
+  <a href="https://lynote.ai/ai-detector-api"><b>Detector API</b></a>
 </p>
+
+> 🚀 **新上线:Lynote AI Detector API。** 想在自己的应用、教学平台或内容审核流程里接入 AI 文本检测?一个 REST 请求即可调用 Lynote 线上同款检测模型,无需自己训练或部署模型。**[获取 API Key → lynote.ai/ai-detector-api](https://lynote.ai/ai-detector-api)**
 
 这个项目刻意保持克制。它输出的是 **AI 风格信号风险**，不是作者身份的证据。
 
@@ -63,6 +67,29 @@ flowchart LR
 - **确定性、有边界。** 哈希固定的切分、合成 demo 数据、`make check` 门禁（manifest / demo / docs / tests）。不发权重、数据集或服务日志，也不做准确率声明。
 
 完整方法：[`MODEL.zh-CN.md`](detection-model-pipeline/docs/MODEL.zh-CN.md) · [`ARCHITECTURE.zh-CN.md`](detection-model-pipeline/docs/ARCHITECTURE.zh-CN.md) · [`DATA_CONSTRUCTION.zh-CN.md`](detection-model-pipeline/docs/DATA_CONSTRUCTION.zh-CN.md) · [`API.zh-CN.md`](detection-model-pipeline/docs/API.zh-CN.md)
+
+## Lynote AI Detector API — 面向开发者
+
+本仓库的本地分析器定位是谨慎的离线初筛,上面的生产模型也只开源了管线、不含权重。如果你需要**在自己的产品里**接入生产级检测能力,[Lynote AI Detector API](https://lynote.ai/ai-detector-api) 通过一个接口提供 Lynote 线上同款检测模型:
+
+- **一次同步 REST 调用** — 发送文本,返回结构化 JSON:整体判定、置信度,以及句子级信号。
+- **覆盖主流模型** — 可识别 ChatGPT、Gemini、Claude、DeepSeek 等主流模型的生成特征。
+- **多语言** — 同一个接口支持多种语言。
+- **服务端密钥** — Bearer Token 鉴权,不同环境可使用独立凭证。
+- **计费简单** — 按输入字数计费(每词 1 credit);Detect 与 Humanize 共用同一额度。新账户赠送试用额度。
+
+```bash
+curl https://api.lynote.ai/v1/detect \
+  -H "Authorization: Bearer $LYNOTE_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"text": "The rapid adoption of large language models has reshaped how teams write."}'
+```
+
+<p align="center">
+  <a href="https://lynote.ai/ai-detector-api"><img src="https://img.shields.io/badge/获取_API_Key-Lynote_AI_Detector_API-blue?style=for-the-badge" alt="获取 Lynote AI Detector API Key"></a>
+</p>
+
+套餐、速率限制和完整文档:**[lynote.ai/ai-detector-api](https://lynote.ai/ai-detector-api)**。和所有检测器一样,检测结果应作为人工复核的参考信号,而非作者身份的证据。
 
 ## 快速开始
 
@@ -271,6 +298,10 @@ GitHub Actions 会自动运行：
 - 仍然保持可解释性的多语言能力
 - 更可复现的数据集评测覆盖
 - 更顺手的 agent 集成体验
+
+## 需要 API?
+
+🔌 访问 **[lynote.ai/ai-detector-api](https://lynote.ai/ai-detector-api)** 获取 AI Detector API Key。
 
 ## 许可证
 

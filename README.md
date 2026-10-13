@@ -23,7 +23,11 @@
   <a href="#evaluation">Evaluation</a>
   ·
   <a href="#use-cases">Use Cases</a>
+  ·
+  <a href="https://lynote.ai/ai-detector-api"><b>Detector API</b></a>
 </p>
+
+> 🚀 **New: the Lynote AI Detector API is live.** Need AI-text detection inside your own app, LMS, or moderation pipeline? Call Lynote's production detector with one REST request — no model to train or host. **[Get an API key → lynote.ai/ai-detector-api](https://lynote.ai/ai-detector-api)**
 
 **Other Quality Projects**</br>
 AI Humanize Text:https://github.com/lynote-ai/humanize-text</br>
@@ -65,6 +69,29 @@ flowchart LR
 - **Deterministic & bounded.** Hash-pinned splits, synthetic demo data, and `make check` gates (manifest / demo / docs / tests). No weights, datasets, or service logs are shipped, and no accuracy claims are made.
 
 Full method: [`MODEL.md`](detection-model-pipeline/docs/MODEL.md) · [`ARCHITECTURE.md`](detection-model-pipeline/docs/ARCHITECTURE.md) · [`DATA_CONSTRUCTION.md`](detection-model-pipeline/docs/DATA_CONSTRUCTION.md) · [`API.md`](detection-model-pipeline/docs/API.md)
+
+## Lynote AI Detector API — for developers
+
+The local analyzer here is built for cautious, offline triage, and the production model above ships as a pipeline, not weights. If you need production-grade detection **inside your own product**, the [Lynote AI Detector API](https://lynote.ai/ai-detector-api) serves Lynote's production detector through a single endpoint:
+
+- **One synchronous REST call** — send text, get structured JSON back with an overall classification, confidence, and sentence-level signals.
+- **Covers major models** — detects patterns associated with ChatGPT, Gemini, Claude, DeepSeek, and more.
+- **Multilingual** — the same endpoint handles multiple languages.
+- **Server-side keys** — Bearer-token auth, with separate credentials per environment.
+- **Simple billing** — 1 credit per input word; Detect and Humanize share one credit balance. New accounts get trial credits.
+
+```bash
+curl https://api.lynote.ai/v1/detect \
+  -H "Authorization: Bearer $LYNOTE_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"text": "The rapid adoption of large language models has reshaped how teams write."}'
+```
+
+<p align="center">
+  <a href="https://lynote.ai/ai-detector-api"><img src="https://img.shields.io/badge/Get_your_API_key-Lynote_AI_Detector_API-blue?style=for-the-badge" alt="Get your Lynote AI Detector API key"></a>
+</p>
+
+Plans, rate limits, and full docs: **[lynote.ai/ai-detector-api](https://lynote.ai/ai-detector-api)**. As with any detector, treat results as a signal for human review, not proof of authorship.
 
 ## Install
 
@@ -273,6 +300,10 @@ Good contributions usually improve one of these:
 - multilingual handling that stays explainable
 - reproducible evaluation coverage
 - agent integration ergonomics
+
+## Need an API?
+
+🔌 Visit **[lynote.ai/ai-detector-api](https://lynote.ai/ai-detector-api)** to get your AI Detector API key.
 
 ## License
 
